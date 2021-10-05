@@ -7,10 +7,11 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"testing"
+
 	"project-api/config"
 	"project-api/models"
 	"project-api/util"
-	"testing"
 
 	echo "github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
@@ -75,7 +76,7 @@ func TestGetAllBookController(t *testing.T) {
 	t.Run("GET /books", func(t *testing.T) {
 		assert.Equal(t, 200, res.Code)
 		assert.Equal(t, 1, len(response))
-		assert.Equal(t, "Name Test B", response[0].Title)
+		assert.Equal(t, "Alfabet", response[0].Title)
 		assert.Equal(t, "Alterra", response[0].Author)
 
 		assert.Equal(t, "Alterra", response[0].Publisher)
@@ -114,7 +115,7 @@ func TestGetBookController(t *testing.T) {
 
 	t.Run("GET /books/:id", func(t *testing.T) {
 		assert.Equal(t, 200, res.Code) // response.Data.
-		assert.Equal(t, "Name Test B", response.Title)
+		assert.Equal(t, "Alfabet", response.Title)
 		assert.Equal(t, "Alterra", response.Author)
 
 		assert.Equal(t, "Alterra", response.Author)
@@ -130,9 +131,9 @@ func TestPostBookController(t *testing.T) {
 
 	// input controller
 	reqBody, _ := json.Marshal(map[string]string{
-		"title":     "Name Test",
-		"author":    "test@alterra.id",
-		"publisher": "test123",
+		"title":     "Alfabet",
+		"author":    "Alterra",
+		"publisher": "Alterra",
 	})
 
 	// setting controller
@@ -170,9 +171,9 @@ func TestEditBookController(t *testing.T) {
 
 	// input controller
 	reqBody, _ := json.Marshal(map[string]string{
-		"name":     "Name Test New",
-		"email":    "test@alterra.id",
-		"password": "test123",
+		"name":     "Alfabet",
+		"email":    "Alterra",
+		"password": "Alterra",
 	})
 
 	// setting controller
