@@ -60,7 +60,6 @@ func (controller *Controller) PostUserController(c echo.Context) error {
 	user := models.User{
 		Name:     userRequest.Name,
 		Email:    userRequest.Email,
-		//Gender:   customerRequest.Gender,
 		Password: userRequest.Password,
 	}
 
@@ -86,14 +85,13 @@ func (controller *Controller) EditUserController(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, common.NewBadRequestResponse())
 	}
 
-	customer := models.User{
+	user := models.User{
 		Name:     userRequest.Name,
 		Email:    userRequest.Email,
-		//Gender:   customerRequest.Gender,
 		Password: userRequest.Password,
 	}
 
-	if _, err := controller.userModel.Edit(customer, id); err != nil {
+	if _, err := controller.userModel.Edit(user, id); err != nil {
 		return c.JSON(http.StatusNotFound, common.NewBadRequestResponse())
 	}
 
@@ -121,13 +119,13 @@ func (controller *Controller) LoginUserController(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, common.NewBadRequestResponse())
 	}
 
-	customer, err := controller.userModel.Login(userRequest.Email, userRequest.Password)
+	user, err := controller.userModel.Login(userRequest.Email, userRequest.Password)
 
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, common.NewBadRequestResponse())
 	}
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"token": customer.Token,
+		"token": user.Token,
 	})
 }

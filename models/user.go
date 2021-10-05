@@ -10,8 +10,8 @@ import (
 
 type User struct {
 	gorm.Model
-	Name     string
-	Email    string
+	Name  string
+	Email string
 	//Gender   string `sql:"type:ENUM('male', 'female')"`
 	Password string `gorm:"<-:false"`
 	Token    string `gorm:"<-:false"`
@@ -83,9 +83,9 @@ func (m *GormUserModel) Edit(newUser User, userId int) (User, error) {
 	return user, nil
 }
 
-func (m *GormUserModel) Delete(customerId int) (User, error) {
+func (m *GormUserModel) Delete(userId int) (User, error) {
 	var user User
-	if err := m.db.Find(&user, "id=?", customerId).Error; err != nil {
+	if err := m.db.Find(&user, "id=?", userId).Error; err != nil {
 		return user, err
 	}
 	if err := m.db.Delete(&user).Error; err != nil {
