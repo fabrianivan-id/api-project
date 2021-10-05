@@ -7,7 +7,8 @@ import (
 	echo "github.com/labstack/echo/v4"
 )
 
-func RegisterPath(e *echo.Echo, userController *user.Controller, bookController book.Controller) {
+func RegisterPath(e *echo.Echo, userController *user.Controller) {
+
 	// ------------------------------------------------------------------
 	// Login & register
 	// ------------------------------------------------------------------
@@ -22,6 +23,9 @@ func RegisterPath(e *echo.Echo, userController *user.Controller, bookController 
 	e.PUT("/users/:id", userController.EditUserController)
 	e.DELETE("/users/:id", userController.DeleteUserController)
 
+}
+
+func RegisterPathBook(e *echo.Echo, bookController *book.Controller) {
 	e.GET("/books", bookController.GetAllBookController)
 	e.GET("/books/:id", bookController.GetBookController)
 	e.PUT("/books/:id", bookController.EditBookController)

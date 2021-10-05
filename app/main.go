@@ -2,7 +2,10 @@ package app
 
 import (
 	"project-api/api"
+
+	bookController "project-api/api/controllers/book"
 	userController "project-api/api/controllers/user"
+
 	"project-api/config"
 	"project-api/models"
 	"project-api/util"
@@ -22,15 +25,17 @@ func main() {
 
 	//initiate user model
 	userModel := models.NewUserModel(db)
-
+	bookModel := models.NewBookModel(db)
 	//initiate user controller
 	newUserController := userController.NewController(userModel)
+	newBookController := bookController.NewController(bookModel)
 
 	//create echo http
 	e := echo.New()
 
 	//register API path and controller
 	api.RegisterPath(e, newUserController)
+	api.RegisterPathBook(e, newBookController)
 
 	// run server
 	address := fmt.Sprintf("localhost:%d", config.Port)
