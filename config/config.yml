@@ -5,4 +5,4 @@ database:
   port: 3306
   username: "root"
   password: "toor"
-  name: "project-api"
+  name: "project_api"
