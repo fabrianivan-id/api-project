@@ -39,7 +39,7 @@ func initConfig() *AppConfig {
 	var defaultConfig AppConfig
 	defaultConfig.Port = 8000
 	defaultConfig.Database.Driver = "mysql"
-	defaultConfig.Database.Name = "project-api"
+	defaultConfig.Database.Name = "project_api"
 	defaultConfig.Database.Address = "localhost"
 	defaultConfig.Database.Port = 3306
 	defaultConfig.Database.Username = "root"
