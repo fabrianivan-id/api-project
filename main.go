@@ -38,7 +38,7 @@ func main() {
 	api.RegisterPathBook(e, newBookController)
 
 	// run server
-	address := fmt.Sprintf("localhost:%d", config.Port)
+	address := fmt.Sprintf(":%d", config.Port)
 
 	if err := e.Start(address); err != nil {
 		log.Info("shutting down the server")
