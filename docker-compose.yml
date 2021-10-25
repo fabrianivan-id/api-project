@@ -22,6 +22,7 @@ services:
         condition: service_healthy
     environment:
       HTTP_PORT: 8080
+      DATABASEADDRESS: appDb
       CONNECTION_STRING: root:toor@tcp(appDb:3306)/project_api?charset=utf8&parseTime=True&loc=Local
       STORAGE: db
     ports:
