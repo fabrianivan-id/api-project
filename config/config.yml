@@ -1,7 +1,7 @@
 port: 8080
 database:
   driver: "mysql" #possible value are mongodb or mysql
-  address: "localhost"
+  address: "appDb"
   port: 3306
   username: "root"
   password: "toor"
